@@ -1,0 +1,36 @@
+body {
+    background-color: #ededed;
+}
+
+.open-sans-title {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+   
+}
+
+.logo{
+
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 2rem;
+      color: #ba0909;
+      font-weight: 700;
+
+
+}
+.book-mark{
+  width: 2rem;
+  height: 2rem;
+}
+
+.title {
+    color: #ba0909;
+    font-size: 7rem;
+    
+}
+
+

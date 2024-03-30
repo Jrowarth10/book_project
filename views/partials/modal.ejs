@@ -1,0 +1,38 @@
+
+<div class="modal fade" tabindex="-1" id="addBookModal" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New book entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+    <form action="/add" method="post">
+          <div class="mb-3">
+            <label for="book-title" class="col-form-label">Book title:</label>
+            <input type="text" class="form-control" id="book-title" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="book-rating" class="col-form-label">Rating out of 10:</label>
+            <input  type="number" class="form-control" id="book-rating" max="10" min="0" name="rating" required></input>
+          </div>
+          <div class="mb-3">
+            <label for="book-description" class="col-form-label required">Short book summary and thoughts:</label>
+            <textarea class="form-control" id="book-description" name="description" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="book-notes" class="col-form-label">Notes:</label>
+            <textarea class="form-control" id="book-notes" name="notes" required></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
+        
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>

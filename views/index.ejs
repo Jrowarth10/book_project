@@ -1,0 +1,85 @@
+<%- include('partials/header.ejs') %>
+
+<h1 class="text-center open-sans-title title"> LIBRARY</h1>
+<div class="row">
+  <div class="col d-flex flex-column align-items-center">
+    <% posts.forEach(post => { %>
+      <h3><%= post.title %></h3>
+      <p>Rating: <%= post.rating %> stars</p>
+      <p><%= post.description %></p>
+      <a href="/posts/<%= post.id %>">Read notes</a>
+      <button class="editBookBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBookModal" 
+      data-postid="<%= post.id %>" data-posttitle="<%= post.title %>" 
+       data-postrating="<%= post.rating %>" data-postdescription="<%= post.description %>" data-postnotes="<%= post.notes %>" > Edit</button>
+<% }); %>
+</div>
+</div>
+
+      
+      <div class="modal fade" tabindex="-1" id="editBookModal" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+          <h5 class="modal-title">Edit book entry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <form action="/edit" method="post">
+            <input type="hidden" id="updatedPostId" name="updatedPostId" value="">
+            <div class="mb-3">
+              <label for="book-title" class="col-form-label">Book title:</label>
+              <input type="text"   class="form-control" id="bookTitle" name="updatedTitle" value="" required>
+            </div>
+            <div class="mb-3">
+              <label for="book-rating" class="col-form-label">Rating out of 10:</label>
+              <input type="number" class="form-control" id="bookRating" max="10" min="0" name="updatedRating" value="" required>
+            </div>
+            <div class="mb-3">
+              <label for="book-description" class="col-form-label required">Short book summary and thoughts:</label>
+              <textarea class="form-control" id="bookDescription" name="updatedDescription" value="" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="book-notes" class="col-form-label">Notes:</label>
+              <textarea class="form-control" id="bookNotes" name="updatedNotes" value="" required></textarea>
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+
+    <button type="submit" class="btn btn-danger" name="action" value="delete">Delete</button>  
+    <button type="submit" class="btn btn-primary" name="action" value="update">Update</button>
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<%- include('partials/footer.ejs') %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.editBookBtn').click(function() {
+      const postId = $(this).data('postid');
+      const postTitle = $(this).data('posttitle');
+      const postRating = $(this).data('postrating');
+      const postDescription = $(this).data('postdescription');
+      const postNotes = $(this).data('postnotes');
+
+      $('#updatedPostId').val(postId);
+      $('#bookTitle').val(postTitle);
+      $('#bookRating').val(postRating);
+      $('#bookDescription').val(postDescription);
+      $('#bookNotes').val(postNotes);
+
+    });
+  });
+</script>
+
+
+
+
+
