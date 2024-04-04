@@ -3,7 +3,9 @@
 <h1 class="text-center open-sans-title title"> LIBRARY</h1>
 <div class="row">
   <div class="col d-flex flex-column align-items-center">
+    
     <% posts.forEach(post => { %>
+      <img src="<%= post.imagecolumn %>" alt="">
       <h3><%= post.title %></h3>
       <p>Rating: <%= post.rating %> stars</p>
       <p><%= post.description %></p>
