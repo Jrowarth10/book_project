@@ -2,20 +2,37 @@
 
 <h1 class="text-center open-sans-title title"> LIBRARY</h1>
 <div class="row">
-  <div class="col d-flex flex-column align-items-center">
-    
-    <% posts.forEach(post => { %>
-      <img src="<%= post.imagecolumn %>" alt="">
-      <h3><%= post.title %></h3>
-      <p>Rating: <%= post.rating %> stars</p>
-      <p><%= post.description %></p>
-      <a href="/posts/<%= post.id %>">Read notes</a>
-      <button class="editBookBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBookModal" 
-      data-postid="<%= post.id %>" data-posttitle="<%= post.title %>" 
-       data-postrating="<%= post.rating %>" data-postdescription="<%= post.description %>" data-postnotes="<%= post.notes %>" > Edit</button>
-<% }); %>
+  <% posts.forEach(post => { %>
+    <div class="col-4 d-flex justify-content-center">
+      <div>
+        <% if (!post.imagecolumn) { %>
+          <div class="outerBook">
+            <div class="innerBook text-center">
+              <h3><%= post.title %></h3>
+          <p>Rating: <%= post.rating %> stars</p>
+            </div>
+          </div>
+          <a href="/posts/<%= post.id %>">Read notes</a>
+           <button class="editBookBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBookModal" 
+          data-postid="<%= post.id %>" data-posttitle="<%= post.title %>" 
+          data-postrating="<%= post.rating %>" data-postdescription="<%= post.description %>" data-postnotes="<%= post.notes %>" > Edit</button>
+
+        <% } else { %>
+          <img src="<%= post.imagecolumn %>" alt="">
+          <% console.log(post.imagecolumn) %>
+          <h3><%= post.title %></h3>
+          <p>Rating: <%= post.rating %> stars</p>
+          <p><%= post.description %></p>
+          <a href="/posts/<%= post.id %>">Read notes</a>
+          <button class="editBookBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBookModal" 
+          data-postid="<%= post.id %>" data-posttitle="<%= post.title %>" 
+          data-postrating="<%= post.rating %>" data-postdescription="<%= post.description %>" data-postnotes="<%= post.notes %>" > Edit</button>
+        <% } %>
+      </div>
+    </div>
+  <% }); %>
 </div>
-</div>
+
 
       
       <div class="modal fade" tabindex="-1" id="editBookModal" aria-labelledby="modal-title" aria-hidden="true">

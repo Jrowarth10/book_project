@@ -52,8 +52,8 @@ async function getPostById(id) {
   return post;
 }
 
-// GETTING THE HOMEPAGE AND THE [PSTS]
-//NEED TO NOW FETCH THE BOOK COVER AND DISPLAY ITR USING THE ISBN CODES FETCHED
+//ROUTES
+//Getting homepage
 
 app.get("/", async (req, res) => {
   try {
@@ -67,6 +67,12 @@ app.get("/", async (req, res) => {
     console.log(error);
   }
 });
+
+app.get("/search", async (req, res) => {
+  const search = req.query.query;
+  console.log(search);
+})
+
 
 //GETTING THE INDIVIDUAL POST BASED ON IT'S ID
 app.get("/posts/:id", async (req, res) => {
@@ -108,9 +114,7 @@ app.post("/add", async (req, res) => {
             `https://covers.openlibrary.org/b/isbn/${firstIsbn}-M.jpg`,
             { responseType: "arraybuffer" }
           );
-          const imageData = Buffer.from(imageResponse.data, "binary").toString(
-            "base64"
-          );
+          const imageData = Buffer.from(imageResponse.data).toString("base64");
 
           // Update the row with image data
           await db.query(
@@ -128,7 +132,6 @@ app.post("/add", async (req, res) => {
 
   res.redirect("/");
 });
-
 //EDIT AND DELETE AN ENTRY
 
 app.post("/edit", async (req, res) => {

@@ -32,5 +32,22 @@ body {
     font-size: 7rem;
     
 }
+/* default book */
+
+.outerBook {
+  width: 180px;
+  height: 279px;
+  background-color: #708B75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerBook {
+  width: 155px;
+  height: 255px;
+  background-color: #708B75;
+  border: 1px solid #fff;
+}
 
 
